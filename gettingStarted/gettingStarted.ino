@@ -6,13 +6,13 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Light is on");
+  Serial.println("Light is on");
   //On Led light  
   digitalWrite(ledPin, HIGH);
   //Stay on Led for 1 Seconds
   delay(1000);
   
-  Serial.print("Light is off");
+  Serial.println("Light is off");
   digitalWrite(ledPin, LOW);
   delay(5000);
 }
