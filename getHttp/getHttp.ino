@@ -3,8 +3,6 @@
 
 #include <WiFi.h>
 
-
-
 //SSID:  TP-Link_FD7A
 //Protocol: 802.11n
 //Security type:  WPA2-Personal
@@ -19,13 +17,17 @@
 //Physical address (MAC): 8C-70-5A-B6-9C-AC
 
 char in;
+const char* ssid     = "Cisco";
+const char* password = "HHSSg103g103";
+const char* serverUrl= "http://localhost:5000/get-data";
+
 
 void setup()
 {
   Serial.begin(9600);
   Serial.println("\n... Starting ESP32 ...");
 
-  WiFi.begin("TP-Link_FD7A", "32373561");
+  WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.println("...");
@@ -40,8 +42,8 @@ void loop() {
 
     HTTPClient http;
 
-    http.begin("http://jsonplaceholder.typicode.com/comments?id=10"); //Specify the URL
-    int httpCode = http.GET();                                        //Make the request
+    http.begin(serverUrl);       //Specify the URL
+    int httpCode = http.GET();   //Make the request
 
     if (httpCode > 0) { //Check for the returning code
 
